@@ -102,21 +102,14 @@
     }
 
     .profile-photo {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+      width: 140px;
+      height: 140px;
       object-fit: cover;
       border-radius: 18px;
       background: var(--soft);
       display: block;
-      margin-bottom: 18px;
-    }
-
-    .label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 10px;
+      margin: 0 auto 16px auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
     .sidebar-row + .sidebar-row {
@@ -237,7 +230,6 @@
     }
 
     .trajectory-item,
-    .news-item,
     .teaching-item,
     .research-item,
     .pub-item {
@@ -246,34 +238,19 @@
 
     .trajectory-item {
       display: grid;
-      grid-template-columns: 128px 1fr;
+      grid-template-columns: 96px 1fr;
       gap: 16px;
       align-items: start;
     }
 
     .uni-photo {
-      width: 128px;
-      height: 92px;
-      border-radius: 16px;
+      width: 96px;
+      height: 68px;
+      border-radius: 12px;
       object-fit: cover;
       background: linear-gradient(135deg, #eef3ff, #f7f8fb);
       border: 1px solid var(--line);
       display: block;
-    }
-
-    .uni-badge {
-      width: 128px;
-      height: 92px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #eef3ff, #f7f8fb);
-      border: 1px solid var(--line);
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      color: #32435f;
-      font-size: 0.84rem;
-      text-align: center;
-      line-height: 1.05;
     }
 
     .meta {
@@ -282,11 +259,21 @@
       margin-top: 3px;
     }
 
+    .news-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 16px 18px;
+    }
+
     .news-year {
-      display: inline-block;
-      min-width: 48px;
       font-weight: 700;
       color: #2f3d52;
+    }
+
+    .news-text {
+      color: #344050;
     }
 
     .research-item p,
@@ -296,10 +283,42 @@
       margin-top: 6px;
     }
 
+    .pub-item {
+      transition: background 0.2s ease;
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .pub-item:hover {
+      background: #f3f4f6;
+    }
+
+    .pub-year {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+
+    .pub-main {
+      min-width: 0;
+    }
+
     .pub-title {
       font-weight: 650;
       font-size: 1rem;
       line-height: 1.5;
+    }
+
+    .pub-title a {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .pub-title a:hover {
+      color: var(--accent);
     }
 
     .pub-authors {
@@ -359,6 +378,12 @@
       .section-card,
       .profile-card {
         padding: 20px;
+      }
+
+      .pub-item,
+      .news-item,
+      .trajectory-item {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -475,21 +500,21 @@
               <img src="udel.jpg" alt="University of Delaware campus" class="uni-photo">
               <div>
                 <h3>University of Delaware</h3>
-                <div class="meta">Ph.D. studies, Educational Statistics &amp; Research Methods </div>
+                <div class="meta">Ph.D. studies, Educational Statistics &amp; Research Methods · 2022–2023</div>
               </div>
             </div>
             <div class="trajectory-item">
               <img src="sfu.jpg" alt="Simon Fraser University campus" class="uni-photo">
               <div>
                 <h3>Simon Fraser University</h3>
-                <div class="meta">B.Sc., Statistics major and Linguistics minor </div>
+                <div class="meta">B.Sc., Statistics major and Linguistics minor · 2018–2024</div>
               </div>
             </div>
             <div class="trajectory-item">
               <img src="ubc.jpg" alt="University of British Columbia campus" class="uni-photo">
               <div>
                 <h3>University of British Columbia</h3>
-                <div class="meta">M.Ed., Education (Applied Linguistics) </div>
+                <div class="meta">M.Ed., Education (Applied Linguistics) · 2015–2018</div>
               </div>
             </div>
           </div>
@@ -499,10 +524,10 @@
           <div class="section-card">
             <h2>Recent News</h2>
             <div class="news-list">
-              <div class="news-item"><span class="news-year">2026</span> Visiting student in Computer Science at the University of Chicago, hosted by Dr. Mina Lee.</div>
-              <div class="news-item"><span class="news-year">2026</span> Presenting research on linguistic and cognitive empowerment via human-computer interaction datasets in the age of LLMs.</div>
-              <div class="news-item"><span class="news-year">2026</span> Research assistant at UIUC supporting language assessment research initiatives.</div>
-              <div class="news-item"><span class="news-year">2025</span> Began Ph.D. in Linguistics (Computational Linguistics track) at UIUC.</div>
+              <div class="news-item"><span class="news-year">2026</span><span class="news-text">Visiting student in Computer Science at the University of Chicago, hosted by Dr. Mina Lee.</span></div>
+              <div class="news-item"><span class="news-year">2026</span><span class="news-text">Presenting research on linguistic and cognitive empowerment via human-computer interaction datasets in the age of LLMs.</span></div>
+              <div class="news-item"><span class="news-year">2026</span><span class="news-text">Research assistant at UIUC supporting language assessment research initiatives.</span></div>
+              <div class="news-item"><span class="news-year">2025</span><span class="news-text">Began Ph.D. in Linguistics at UIUC.</span></div>
             </div>
           </div>
 
@@ -564,29 +589,61 @@
         <section id="publications" class="section section-card">
           <h2>Selected Publications</h2>
           <div class="pub-list">
+
             <div class="pub-item">
-              <div class="pub-title">A Latent Dirichlet Allocation Approach to Understanding Students’ Perceptions of Automated Writing Evaluation</div>
-              <div class="pub-authors">Joshua Wilson*, Saimou Zhang*, Stephanie Palermo, Iris Cruz Cordero, Qiang Zhang, Nathan Myers, Matthew Potter, Mike Eacker, and Mary Coles.</div>
-              <div class="pub-venue">Computers and Education Open, 2024. *Co-first authors.</div>
+              <div class="pub-year">2024</div>
+              <div class="pub-main">
+                <div class="pub-title">
+                  <a href="https://doi.org/10.1016/j.caeo.2024.100194" target="_blank">
+                    A Latent Dirichlet Allocation Approach to Understanding Students’ Perceptions of Automated Writing Evaluation
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Joshua Wilson*, <b>Saimou Zhang*</b>, Corey Palermo, Tania Cruz Cordero, Fan Zhang, Matthew C. Myers, Andrew Potter, Halley Eacker, Jessica Coles
+                </div>
+                <div class="pub-venue">Computers and Education Open, 2024. *Co-first authors.</div>
+                <div class="pub-links">
+                  <a href="https://doi.org/10.1016/j.caeo.2024.100194" target="_blank">Paper</a>
+                </div>
+              </div>
             </div>
 
             <div class="pub-item">
-              <div class="pub-title">Middle School Teachers’ Implementation and Perceptions of Automated Writing Evaluation</div>
-              <div class="pub-authors">Joshua Wilson, Nestor Delgado, Stephanie Palermo, Iris Cruz Cordero, Nathan Myers, Mike Eacker, Matthew Potter, Mary Coles, and Saimou Zhang.</div>
-              <div class="pub-venue">Computers and Education Open, 2024.</div>
+              <div class="pub-year">2024</div>
+              <div class="pub-main">
+                <div class="pub-title">
+                  <a href="https://doi.org/10.1016/j.caeo.2024.100231" target="_blank">
+                    Middle School Teachers’ Implementation and Perceptions of Automated Writing Evaluation
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Joshua Wilson, Amanda Delgado, Corey Palermo, Tania Cruz Cordero, Matthew C. Myers, Halley Eacker, Andrew Potter, Jessica Coles, <b>Saimou Zhang</b>
+                </div>
+                <div class="pub-venue">Computers and Education Open, 2024.</div>
+                <div class="pub-links">
+                  <a href="https://doi.org/10.1016/j.caeo.2024.100231" target="_blank">Paper</a>
+                </div>
+              </div>
             </div>
 
             <div class="pub-item">
-              <div class="pub-title">Relationships Between Teachers’ Perceptions and Use of AWE and Gains in Students’ Writing Performance</div>
-              <div class="pub-authors">Nestor Delgado, Joshua Wilson, Stephanie Palermo, Iris Cruz Cordero, Nathan Myers, Mike Eacker, Matthew Potter, Mary Coles, and Saimou Zhang.</div>
-              <div class="pub-venue">In <em>Routledge International Handbook of Automated Essay Evaluation</em>, 2024.</div>
+              <div class="pub-year">2024</div>
+              <div class="pub-main">
+                <div class="pub-title">
+                  <a href="https://doi.org/10.4324/9781003397618" target="_blank">
+                    Relationships Between Teachers' Perceptions and Use of AWE and Gains in Students' Writing Performance
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Amanda Delgado, Joshua Wilson, Corey Palermo, Tania Cruz Cordero, Matthew C. Myers, Halley Eacker, Andrew Potter, Jessica Coles, <b>Saimou Zhang</b>
+                </div>
+                <div class="pub-venue">In <em>Routledge International Handbook of Automated Essay Evaluation</em>, 2024.</div>
+                <div class="pub-links">
+                  <a href="https://doi.org/10.4324/9781003397618" target="_blank">Paper</a>
+                </div>
+              </div>
             </div>
 
-            <div class="pub-item">
-              <div class="pub-title">Metaphorizing Learning: Immigrant Engineers Bridging Career Pathways in Canada</div>
-              <div class="pub-authors">Hongxia Shan and Saimou Zhang.</div>
-              <div class="pub-venue">Proceedings of the 36th CASAE Annual Conference, 2017.</div>
-            </div>
           </div>
         </section>
 
