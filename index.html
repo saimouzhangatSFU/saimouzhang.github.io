@@ -1,185 +1,602 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saimou Zhang</title>
+  <style>
+    :root {
+      --bg: #f8f8f7;
+      --panel: #ffffff;
+      --text: #1c2430;
+      --muted: #677081;
+      --line: #e6e8ed;
+      --soft: #f1f3f6;
+      --accent: #2563eb;
+      --max: 1080px;
+    }
 
-<meta charset="UTF-8">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      line-height: 1.72;
+    }
 
-<title>Saimou Zhang</title>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248, 248, 247, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
 
-<style>
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 16px;
+    }
 
-body{
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
 
-font-family:Arial,Helvetica,sans-serif;
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
 
-background:#fafaf9;
+    .nav-links a:hover,
+    .text-link:hover {
+      color: var(--accent);
+    }
 
-margin:40px;
+    main {
+      padding: 38px 0 80px;
+    }
 
-max-width:900px;
+    .hero {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 34px;
+      align-items: start;
+    }
 
-line-height:1.6;
+    .profile-card,
+    .section-card,
+    .pub-item,
+    .news-item,
+    .trajectory-item,
+    .teaching-item,
+    .research-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+    }
 
-}
+    .profile-card {
+      padding: 22px;
+      position: sticky;
+      top: 92px;
+    }
 
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 18px;
+      background: var(--soft);
+      display: block;
+      margin-bottom: 18px;
+    }
 
+    .label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
 
-h1{font-size:42px;margin-bottom:5px;}
+    .sidebar-row + .sidebar-row {
+      margin-top: 14px;
+    }
 
-h2{margin-top:40px;border-bottom:1px solid #ddd;padding-bottom:5px;}
+    .sidebar-key {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
 
-a{color:#2563eb;text-decoration:none;}
+    .sidebar-value {
+      font-size: 0.97rem;
+    }
 
-a:hover{text-decoration:underline;}
+    .main-col {
+      min-width: 0;
+    }
 
+    .eyebrow {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
 
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+    }
 
-.photo{
+    .subtitle {
+      margin-top: 10px;
+      font-size: 1.12rem;
+      color: #2e3744;
+      font-weight: 500;
+    }
 
-width:180px;
+    .intro {
+      margin-top: 18px;
+      max-width: 760px;
+      font-size: 1.04rem;
+      color: #344050;
+    }
 
-border-radius:10px;
+    .chips {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-margin-top:15px;
+    .chip {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: #344050;
+      font-size: 0.92rem;
+    }
 
-}
+    .section {
+      margin-top: 34px;
+    }
 
+    .section-card {
+      padding: 26px;
+    }
 
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
 
-.button{
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.55rem;
+      letter-spacing: -0.02em;
+    }
 
-display:inline-block;
+    h3 {
+      margin: 0;
+      font-size: 1.02rem;
+      letter-spacing: -0.01em;
+    }
 
-padding:8px 14px;
+    p {
+      margin: 0 0 14px;
+    }
 
-border-radius:6px;
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
 
-background:#2563eb;
+    .interest {
+      background: var(--soft);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+      color: #394453;
+    }
 
-color:white;
+    .trajectory-list,
+    .news-list,
+    .research-list,
+    .teaching-list,
+    .pub-list {
+      display: grid;
+      gap: 14px;
+    }
 
-margin-right:10px;
+    .trajectory-item,
+    .news-item,
+    .teaching-item,
+    .research-item,
+    .pub-item {
+      padding: 16px 18px;
+    }
 
-}
+    .trajectory-item {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
 
-</style>
+    .uni-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #eef3ff, #f7f8fb);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #32435f;
+      font-size: 0.84rem;
+      text-align: center;
+      line-height: 1.05;
+    }
 
+    .meta {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .news-year {
+      display: inline-block;
+      min-width: 48px;
+      font-weight: 700;
+      color: #2f3d52;
+    }
+
+    .research-item p,
+    .pub-authors,
+    .pub-venue,
+    .pub-links {
+      margin-top: 6px;
+    }
+
+    .pub-title {
+      font-weight: 650;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .pub-authors {
+      color: #2f3a49;
+      font-size: 0.95rem;
+    }
+
+    .pub-venue {
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-style: italic;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.92rem;
+      color: var(--accent);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    footer {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 22px));
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-card,
+      .profile-card {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
-
-
-
 <body>
-
-
-
-<h1>Saimou (Simon) Zhang</h1>
-
-<img src="Saimou Zhang.JPG" style="width:180px;border-radius:12px;margin-top:15px;">
-
-<p>
-
-Ph.D. student in Linguistics at the University of Illinois Urbana-Champaign working at the intersection of computational linguistics, discourse analysis, writing assessment, psycholinguistics, and human-computer interaction.
-
-</p>
-
-
-
-<p>
-
-<a class="button" href="CV_Saimou_Zhang.pdf">Download CV</a>
-
-<a class="button" href="https://scholar.google.com/citations?user=-srXsyQAAAAJ&hl=en">Google Scholar</a>
-
-</p>
-
-
-
-<h2>About</h2>
-
-
-
-<p>
-
-I study language, writing, and cognition using both theoretical and computational approaches. My work connects discourse analysis, psycholinguistics, and educational technology.
-
-</p>
-
-
-
-<h2>Research Interests</h2>
-
-
-
-<ul>
-
-<li>Computational linguistics</li>
-
-<li>Discourse structure and coherence</li>
-
-<li>Writing assessment</li>
-
-<li>Human-computer interaction</li>
-
-<li>Educational NLP</li>
-
-</ul>
-
-
-
-<h2>Recent News</h2>
-
-
-
-<ul>
-
-<li>2026 – Visiting student in Computer Science at the University of Chicago (host: Mina Lee)</li>
-
-<li>2026 – Presenting research on human-computer interaction datasets for language learning</li>
-
-<li>2025 – Began PhD in Linguistics at UIUC</li>
-
-</ul>
-
-
-
-<h2>Selected Publications</h2>
-
-
-
-<p><b>A Latent Dirichlet Allocation Approach to Understanding Students’ Perceptions of Automated Writing Evaluation</b><br>
-
-Computers and Education Open, 2024</p>
-
-
-
-<p><b>Middle School Teachers’ Implementation and Perceptions of Automated Writing Evaluation</b><br>
-
-Computers and Education Open, 2024</p>
-
-
-
-<p><b>Relationships Between Teachers' Perceptions and Use of AWE and Gains in Students' Writing Performance</b><br>
-
-Routledge International Handbook of Automated Essay Evaluation, 2024</p>
-
-
-
-<h2>Contact</h2>
-
-
-
-<p>Email: <a href="mailto:saimouz2@illinois.edu">saimouz2@illinois.edu</a></p>
-
-
-
-<p>© 2026 Saimou Zhang</p>
-
-
-
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">Saimou Zhang</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <aside class="profile-card">
+        <img src="Saimou Zhang.JPG" alt="Saimou Zhang" class="profile-photo">
+
+        <div class="sidebar-row">
+          <div class="sidebar-key">Email</div>
+          <div class="sidebar-value"><a class="text-link" href="mailto:saimouz2@illinois.edu">saimouz2@illinois.edu</a></div>
+        </div>
+
+        <div class="sidebar-row">
+          <div class="sidebar-key">Affiliation</div>
+          <div class="sidebar-value">University of Illinois Urbana-Champaign</div>
+        </div>
+
+        <div class="sidebar-row">
+          <div class="sidebar-key">Current role</div>
+          <div class="sidebar-value">Ph.D. Student, Linguistics</div>
+        </div>
+
+        <div class="sidebar-row">
+          <div class="sidebar-key">Links</div>
+          <div class="sidebar-value">
+            <a class="text-link" href="https://scholar.google.com/citations?user=-srXsyQAAAAJ&hl=en" target="_blank">Google Scholar</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="main-col">
+        <div class="eyebrow">Academic homepage</div>
+        <h1>Saimou (Simon) Zhang</h1>
+        <div class="subtitle">Ph.D. student in Linguistics · University of Illinois Urbana-Champaign</div>
+        <p class="intro">
+          I work at the intersection of computational linguistics, discourse analysis, writing assessment,
+          psycholinguistics, and human-computer interaction. My research asks how linguistic theory,
+          computational methods, and human-centered design can deepen our understanding of writing,
+          coherence, and AI-mediated language use.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Computational Linguistics</span>
+          <span class="chip">Discourse &amp; Coherence</span>
+          <span class="chip">Writing Assessment</span>
+          <span class="chip">Psycholinguistics</span>
+          <span class="chip">Language &amp; HCI</span>
+        </div>
+
+        <section id="about" class="section two-col">
+          <div class="section-card">
+            <h2>About</h2>
+            <p>
+              I study language, writing, and cognition using both theoretical and computational approaches.
+              My background spans applied linguistics, statistics, educational measurement, discourse analysis,
+              and language teaching.
+            </p>
+            <p>
+              I am especially interested in computational models of discourse, coherence in writing,
+              AI-mediated writing support, and language technologies that better serve learners,
+              writers, and educators.
+            </p>
+          </div>
+
+          <div class="section-card">
+            <h2>Interests</h2>
+            <div class="interest-list">
+              <span class="interest">Computational linguistics</span>
+              <span class="interest">Discourse structure</span>
+              <span class="interest">Coherence</span>
+              <span class="interest">Writing assessment</span>
+              <span class="interest">Psycholinguistics</span>
+              <span class="interest">Human-computer interaction</span>
+              <span class="interest">Educational NLP</span>
+              <span class="interest">Corpus linguistics</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section section-card">
+          <h2>Trajectory</h2>
+          <div class="trajectory-list">
+            <div class="trajectory-item">
+              <div class="uni-badge">UIUC</div>
+              <div>
+                <h3>University of Illinois Urbana-Champaign</h3>
+                <div class="meta">Ph.D., Linguistics (Computational Linguistics track) · 2025–2030 expected</div>
+              </div>
+            </div>
+            <div class="trajectory-item">
+              <div class="uni-badge">UC</div>
+              <div>
+                <h3>University of Chicago</h3>
+                <div class="meta">Visiting Student, Computer Science · 2026 · Host: Mina Lee</div>
+              </div>
+            </div>
+            <div class="trajectory-item">
+              <div class="uni-badge">UD</div>
+              <div>
+                <h3>University of Delaware</h3>
+                <div class="meta">Ph.D. studies, Educational Statistics &amp; Research Methods · 2022–2023</div>
+              </div>
+            </div>
+            <div class="trajectory-item">
+              <div class="uni-badge">SFU</div>
+              <div>
+                <h3>Simon Fraser University</h3>
+                <div class="meta">B.Sc., Statistics major and Linguistics minor · 2018–2024</div>
+              </div>
+            </div>
+            <div class="trajectory-item">
+              <div class="uni-badge">UBC</div>
+              <div>
+                <h3>University of British Columbia</h3>
+                <div class="meta">M.Ed., Education (Applied Linguistics) · 2015–2018</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="research" class="section two-col">
+          <div class="section-card">
+            <h2>Recent News</h2>
+            <div class="news-list">
+              <div class="news-item"><span class="news-year">2026</span> Visiting student in Computer Science at the University of Chicago, hosted by Dr. Mina Lee.</div>
+              <div class="news-item"><span class="news-year">2026</span> Presenting research on linguistic and cognitive empowerment via human-computer interaction datasets in the age of LLMs.</div>
+              <div class="news-item"><span class="news-year">2026</span> Research assistant at UIUC supporting language assessment research initiatives.</div>
+              <div class="news-item"><span class="news-year">2025</span> Began Ph.D. in Linguistics (Computational Linguistics track) at UIUC.</div>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <h2>Research</h2>
+            <div class="research-list">
+              <div class="research-item">
+                <h3>Computational discourse and coherence</h3>
+                <p>Modeling discourse organization, topic development, rhetorical relations, and information flow in writing.</p>
+              </div>
+              <div class="research-item">
+                <h3>Writing assessment and educational NLP</h3>
+                <p>Studying how computational methods and AI tools can support evaluation, feedback, and writer development.</p>
+              </div>
+              <div class="research-item">
+                <h3>Human-computer interaction for language</h3>
+                <p>Exploring how people think, write, and learn with AI systems and language technologies.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="teaching" class="section two-col">
+          <div class="section-card">
+            <h2>Teaching</h2>
+            <div class="teaching-list">
+              <div class="teaching-item">
+                <h3>English Instructor, University of Illinois Urbana-Champaign</h3>
+                <div class="meta">2025–present</div>
+                <p>ESL 511 Written &amp; Oral Communication; ESL 525 Business Communication.</p>
+              </div>
+              <div class="teaching-item">
+                <h3>English Lecturer, Beijing Normal University – Hong Kong Baptist University</h3>
+                <div class="meta">2020–2025</div>
+                <p>Taught EAP, writing, and communication courses with attention to discourse and rhetorical organization.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <h2>Skills</h2>
+            <div class="teaching-list">
+              <div class="teaching-item">
+                <h3>Programming</h3>
+                <p>Python, R; basic Java and C.</p>
+              </div>
+              <div class="teaching-item">
+                <h3>Languages</h3>
+                <p>English (C2), French (B2), Chinese (native).</p>
+              </div>
+              <div class="teaching-item">
+                <h3>Training</h3>
+                <p>LSA Linguistics Institute, CELTA, SIG Writing Research School.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="publications" class="section section-card">
+          <h2>Selected Publications</h2>
+          <div class="pub-list">
+            <div class="pub-item">
+              <div class="pub-title">A Latent Dirichlet Allocation Approach to Understanding Students’ Perceptions of Automated Writing Evaluation</div>
+              <div class="pub-authors">Joshua Wilson*, Saimou Zhang*, Stephanie Palermo, Iris Cruz Cordero, Qiang Zhang, Nathan Myers, Matthew Potter, Mike Eacker, and Mary Coles.</div>
+              <div class="pub-venue">Computers and Education Open, 2024. *Co-first authors.</div>
+            </div>
+
+            <div class="pub-item">
+              <div class="pub-title">Middle School Teachers’ Implementation and Perceptions of Automated Writing Evaluation</div>
+              <div class="pub-authors">Joshua Wilson, Nestor Delgado, Stephanie Palermo, Iris Cruz Cordero, Nathan Myers, Mike Eacker, Matthew Potter, Mary Coles, and Saimou Zhang.</div>
+              <div class="pub-venue">Computers and Education Open, 2024.</div>
+            </div>
+
+            <div class="pub-item">
+              <div class="pub-title">Relationships Between Teachers’ Perceptions and Use of AWE and Gains in Students’ Writing Performance</div>
+              <div class="pub-authors">Nestor Delgado, Joshua Wilson, Stephanie Palermo, Iris Cruz Cordero, Nathan Myers, Mike Eacker, Matthew Potter, Mary Coles, and Saimou Zhang.</div>
+              <div class="pub-venue">In <em>Routledge International Handbook of Automated Essay Evaluation</em>, 2024.</div>
+            </div>
+
+            <div class="pub-item">
+              <div class="pub-title">Metaphorizing Learning: Immigrant Engineers Bridging Career Pathways in Canada</div>
+              <div class="pub-authors">Hongxia Shan and Saimou Zhang.</div>
+              <div class="pub-venue">Proceedings of the 36th CASAE Annual Conference, 2017.</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="section section-card">
+          <h2>Contact</h2>
+          <p>
+            I’m happy to connect on topics related to computational linguistics, discourse analysis,
+            writing studies, AI for education, and language-focused HCI.
+          </p>
+          <div class="contact-links">
+            <a class="text-link" href="mailto:saimouz2@illinois.edu">Email</a>
+            <a class="text-link" href="https://scholar.google.com/citations?user=-srXsyQAAAAJ&hl=en" target="_blank">Google Scholar</a>
+          </div>
+        </section>
+
+        <footer>
+          © 2026 Saimou Zhang.
+        </footer>
+      </div>
+    </section>
+  </main>
 </body>
-
 </html>
