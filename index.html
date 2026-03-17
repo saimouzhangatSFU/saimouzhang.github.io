@@ -127,6 +127,34 @@
       font-size: 0.97rem;
     }
 
+    .sidebar-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+    
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      color: var(--text);
+      transition: color 0.18s ease, transform 0.18s ease;
+    }
+    
+    .icon-link:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    
+    .icon-link svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
     .main-col {
       min-width: 0;
     }
@@ -541,16 +569,6 @@
           <div class="sidebar-value">
             <a class="text-link" href="mailto:saimouz2@illinois.edu">saimouz2@illinois.edu</a>
           </div>
-        </div>
-
-        <div class="sidebar-row">
-          <div class="sidebar-key">Affiliation</div>
-          <div class="sidebar-value">University of Illinois Urbana-Champaign</div>
-        </div>
-
-        <div class="sidebar-row">
-          <div class="sidebar-key">Current role</div>
-          <div class="sidebar-value">Ph.D. Student, Linguistics</div>
         </div>
 
         <div class="sidebar-row">
