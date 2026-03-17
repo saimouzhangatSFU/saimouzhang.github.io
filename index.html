@@ -13,7 +13,7 @@
       --line: #e6e8ed;
       --soft: #f1f3f6;
       --accent: #2563eb;
-      --max: 1080px;
+      --max: 1200px;
     }
 
     * { box-sizing: border-box; }
@@ -80,7 +80,7 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 280px minmax(0, 1fr);
+      grid-template-columns: 250px minmax(0, 1fr);
       gap: 34px;
       align-items: start;
     }
@@ -90,7 +90,6 @@
     .pub-item,
     .news-item,
     .trajectory-item,
-    .teaching-item,
     .research-item {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -186,13 +185,6 @@
       padding: 26px;
     }
 
-    .section-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 34px;
-    }
-
     h2 {
       margin: 0 0 16px;
       font-size: 1.55rem;
@@ -212,14 +204,12 @@
     .trajectory-list,
     .news-list,
     .research-list,
-    .teaching-list,
     .pub-list {
       display: grid;
       gap: 14px;
     }
 
     .trajectory-item,
-    .teaching-item,
     .research-item,
     .pub-item {
       padding: 16px 18px;
@@ -227,8 +217,8 @@
 
     .trajectory-item {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 22px;
+      grid-template-columns: 95px 1fr;
+      gap: 18px;
       align-items: start;
     }
 
@@ -247,6 +237,24 @@
       font-size: 0.88rem;
       color: var(--muted);
       margin-top: 3px;
+    }
+
+    .additional-training {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .additional-training h3 {
+      margin-bottom: 14px;
+    }
+
+    .training-entry + .training-entry {
+      margin-top: 18px;
+    }
+
+    .training-entry p:last-child {
+      margin-bottom: 0;
     }
 
     .news-item {
@@ -330,13 +338,6 @@
       color: var(--accent);
     }
 
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 12px;
-    }
-
     .accent-heading {
       display: flex;
       align-items: center;
@@ -352,6 +353,13 @@
       flex: 0 0 auto;
     }
 
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
     footer {
       margin-top: 36px;
       color: var(--muted);
@@ -360,8 +368,7 @@
     }
 
     @media (max-width: 900px) {
-      .hero,
-      .section-grid {
+      .hero {
         grid-template-columns: 1fr;
       }
 
@@ -401,7 +408,6 @@
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
         <a href="#news">News</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
@@ -445,7 +451,7 @@
         <div class="subtitle">Ph.D. student in Linguistics · University of Illinois Urbana-Champaign</div>
 
         <p class="intro">
-          Broadly speaking, I study language, writing, and cognition using theoretical,
+          Broadly speaking, I study language, writing, and cognition using both theoretical,
           psychological, and computational approaches.
         </p>
 
@@ -456,7 +462,7 @@
 
         <p class="intro">
           Currently, I am investigating the conjoined effects of a 3D salience model and cognitive
-          authorship on the reuse of new named entities in writing.
+          authorship in affecting the reuse of new named entities in writing.
         </p>
 
         <div class="chips">
@@ -487,83 +493,68 @@
           </div>
         </section>
 
-        <section class="section-grid">
-          <section id="education" class="section-card">
-            <h2>Education</h2>
-            <div class="trajectory-list">
-              <div class="trajectory-item">
-                <img src="uiuc.jpg" alt="University of Illinois Urbana-Champaign campus" class="uni-photo" />
-                <div>
-                  <h3>University of Illinois Urbana-Champaign</h3>
-                  <div class="meta">Ph.D., Linguistics (Computational Linguistics track) · 2025–2030 expected</div>
-                </div>
-              </div>
-
-              <div class="trajectory-item">
-                <img src="uchicago.jpg" alt="University of Chicago campus" class="uni-photo" />
-                <div>
-                  <h3>University of Chicago</h3>
-                  <div class="meta">Visiting Student, Computer Science · 2026</div>
-                </div>
-              </div>
-
-              <div class="trajectory-item">
-                <img src="udel.jpg" alt="University of Delaware campus" class="uni-photo" />
-                <div>
-                  <h3>University of Delaware</h3>
-                  <div class="meta">Ph.D. studies, Educational Statistics &amp; Research Methods · 2022–2023</div>
-                </div>
-              </div>
-
-              <div class="trajectory-item">
-                <img src="sfu.jpg" alt="Simon Fraser University campus" class="uni-photo" />
-                <div>
-                  <h3>Simon Fraser University</h3>
-                  <div class="meta">B.Sc., Statistics major and Linguistics minor · 2018–2024</div>
-                </div>
-              </div>
-
-              <div class="trajectory-item">
-                <img src="ubc.jpg" alt="University of British Columbia campus" class="uni-photo" />
-                <div>
-                  <h3>University of British Columbia</h3>
-                  <div class="meta">M.Ed., Education (Applied Linguistics) · 2015–2018</div>
-                </div>
+        <section id="education" class="section section-card">
+          <h2>Education</h2>
+          <div class="trajectory-list">
+            <div class="trajectory-item">
+              <img src="uiuc.jpg" alt="University of Illinois Urbana-Champaign campus" class="uni-photo" />
+              <div>
+                <h3>University of Illinois Urbana-Champaign</h3>
+                <div class="meta">Ph.D., Linguistics (Computational Linguistics track) · 2025–2030 expected</div>
               </div>
             </div>
-          </section>
 
-          <section id="skills" class="section-card">
-            <h2>Skills</h2>
-            <div class="teaching-list">
-              <div class="teaching-item">
-                <h3>Training</h3>
-                <p>
-                  <b>2026 · SIG Writing Research School</b><br />
-                  Zürich, Switzerland (selective admission)
-                </p>
-                <p>
-                  Training in keystroke logging with Inputlog, analysis and visualization of
-                  keystroke data, fluency measurement, handwriting analysis with CSWin,
-                  screen-recording methods, and writing with AI from process and product perspectives.
-                </p>
-                <p>
-                  <b>2024 · LSA Linguistic Institute</b><br />
-                  Coursework in discourse semantics and discourse pragmatics.
-                </p>
-              </div>
-
-              <div class="teaching-item">
-                <h3>Programming</h3>
-                <p>Python, R.</p>
-              </div>
-
-              <div class="teaching-item">
-                <h3>Languages</h3>
-                <p>English, French, Chinese.</p>
+            <div class="trajectory-item">
+              <img src="uchicago.jpg" alt="University of Chicago campus" class="uni-photo" />
+              <div>
+                <h3>University of Chicago</h3>
+                <div class="meta">Visiting Student, Computer Science · 2026</div>
               </div>
             </div>
-          </section>
+
+            <div class="trajectory-item">
+              <img src="udel.jpg" alt="University of Delaware campus" class="uni-photo" />
+              <div>
+                <h3>University of Delaware</h3>
+                <div class="meta">Ph.D. studies, Educational Statistics &amp; Research Methods · 2022–2023</div>
+              </div>
+            </div>
+
+            <div class="trajectory-item">
+              <img src="sfu.jpg" alt="Simon Fraser University campus" class="uni-photo" />
+              <div>
+                <h3>Simon Fraser University</h3>
+                <div class="meta">B.Sc., Statistics major and Linguistics minor · 2018–2024</div>
+              </div>
+            </div>
+
+            <div class="trajectory-item">
+              <img src="ubc.jpg" alt="University of British Columbia campus" class="uni-photo" />
+              <div>
+                <h3>University of British Columbia</h3>
+                <div class="meta">M.Ed., Education (Applied Linguistics) · 2015–2018</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="additional-training">
+            <h3>Additional Training</h3>
+
+            <div class="training-entry">
+              <div class="meta"><strong>2026 · SIG Writing Research School</strong></div>
+              <p>Zürich, Switzerland (selective admission)</p>
+              <p>
+                Training in keystroke logging with Inputlog, analysis and visualization of
+                keystroke data, fluency measurement, handwriting analysis with CSWin,
+                screen-recording methods, and writing with AI from process and product perspectives.
+              </p>
+            </div>
+
+            <div class="training-entry">
+              <div class="meta"><strong>2024 · LSA Linguistic Institute</strong></div>
+              <p>Coursework in discourse semantics and discourse pragmatics.</p>
+            </div>
+          </div>
         </section>
 
         <section id="news" class="section section-card">
